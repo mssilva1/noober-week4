@@ -8,30 +8,29 @@ async function pageLoaded() {
   
   // 🔥 start here: write code to loop through the rides
   
- function fullName(firstName, lastName){
-   return `${firstName} ${lastName}`
+ function fullName(ridei){
+   return `${ridei[0].passengerDetails.first} ${ridei[0].passengerDetails.last}`
  }
 
- function numberPassenger(number){
-  if (number==1) {
-    return `${number} passenger`
+ function numberPassenger(ridei){
+  if (ridei[0].numberOfPassengers ==1) {
+    return `${ridei[0].numberOfPassengers} passenger`
   } else {
-    return `${number} passengers`
+    return `${ridei[0].numberOfPassengers} passengers`
   }
  }
 
- function levelOfService(legs, purple, passengers){
-  if (legs >1){
+ function levelOfService(ridei){
+  if (ridei.length >1){
     return `Noober Pool`
-  } else if (purple == true){
+  } else if (ridei[0].purpleRequested == true){
     return `Noober Purple`
-  } else if (passengers>3){
+  } else if (ridei[0].numberOfPassengers>3){
     return `Noober XL`
   } else {
     return `Noober X`
   }
  }
-
 
   for(let i=0; i<json.length; i++){
     ridei = json[i]
@@ -42,7 +41,7 @@ async function pageLoaded() {
     outputElement.insertAdjacentHTML('beforeend', `
     <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
     <i class="fas fa-car-side"></i>
-    <span>${levelOfService(ridei.length,ridei[0].purpleRequested,ridei[0].numberOfPassengers)}</span>
+    <span>${levelOfService(ridei)}</span>
   </h1>
   `)
     
@@ -53,12 +52,12 @@ async function pageLoaded() {
         <div class="border-4 border-gray-900 p-4 my-4 text-left">
           <div class="flex">
             <div class="w-1/2">
-              <h2 class="text-2xl py-1">${fullName(ride.passengerDetails.first,ride.passengerDetails.last)}</h2>
+              <h2 class="text-2xl py-1">${ride.passengerDetails.first} ${ride.passengerDetails.last}</h2>
               <p class="font-bold text-gray-600">${ride.passengerDetails.phoneNumber}</p>
             </div>
             <div class="w-1/2 text-right">
               <span class="rounded-xl bg-gray-600 text-white p-2">
-              ${numberPassenger(ride.numberOfPassengers)} 
+              ${ride.numberOfPassengers} passenger
               </span>
             </div>
           </div>
@@ -82,18 +81,18 @@ async function pageLoaded() {
     outputElement.insertAdjacentHTML('beforeend', `
         <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
         <i class="fas fa-car-side"></i>
-        <span>${levelOfService(ridei.length,ridei[0].purpleRequested,ridei[0].numberOfPassengers)}</span>
+        <span>${levelOfService(ridei)}</span>
       </h1>
 
       <div class="border-4 border-purple-500 p-4 my-4 text-left">
         <div class="flex">
           <div class="w-1/2">
-            <h2 class="text-2xl py-1">${fullName(ridei[0].passengerDetails.first,ridei[0].passengerDetails.last)}</h2>
+            <h2 class="text-2xl py-1">${fullName(ridei)}</h2>
             <p class="font-bold text-gray-600">${ridei[0].passengerDetails.phoneNumber}</p>
           </div>
           <div class="w-1/2 text-right">
             <span class="rounded-xl bg-purple-600 text-white p-2">
-            ${numberPassenger(ridei[0].numberOfPassengers)} 
+            ${numberPassenger(ridei)} 
             </span>
           </div>
         </div>
@@ -115,18 +114,18 @@ async function pageLoaded() {
     outputElement.insertAdjacentHTML('beforeend', `
         <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
         <i class="fas fa-car-side"></i>
-        <span>${levelOfService(ridei.length,ridei[0].purpleRequested,ridei[0].numberOfPassengers)}</span>
+        <span>${levelOfService(ridei)}</span>
       </h1>
 
       <div class="border-4 border-gray-900 p-4 my-4 text-left">
         <div class="flex">
           <div class="w-1/2">
-            <h2 class="text-2xl py-1">${fullName(ridei[0].passengerDetails.first,ridei[0].passengerDetails.last)}</h2>
+            <h2 class="text-2xl py-1">${fullName(ridei)}</h2>
             <p class="font-bold text-gray-600">${ridei[0].passengerDetails.phoneNumber}</p>
           </div>
           <div class="w-1/2 text-right">
             <span class="rounded-xl bg-gray-600 text-white p-2">
-            ${numberPassenger(ridei[0].numberOfPassengers)} 
+            ${numberPassenger(ridei)}  
             </span>
           </div>
         </div>
@@ -149,17 +148,17 @@ async function pageLoaded() {
     outputElement.insertAdjacentHTML('beforeend', `
       <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
       <i class="fas fa-car-side"></i>
-      <span>${levelOfService(ridei.length,ridei[0].purpleRequested,ridei[0].numberOfPassengers)}</span>
+      <span>${levelOfService(ridei)}</span>
     </h1>
     <div class="border-4 border-gray-900 p-4 my-4 text-left">
       <div class="flex">
         <div class="w-1/2">
-          <h2 class="text-2xl py-1">${fullName(ridei[0].passengerDetails.first,ridei[0].passengerDetails.last)}</h2>
+          <h2 class="text-2xl py-1">${fullName(ridei)}</h2>
           <p class="font-bold text-gray-600">${ridei[0].passengerDetails.phoneNumber}</p>
         </div>
         <div class="w-1/2 text-right">
           <span class="rounded-xl bg-gray-600 text-white p-2">
-          ${numberPassenger(ridei[0].numberOfPassengers)} 
+          ${numberPassenger(ridei)}  
           </span>
         </div>
       </div>
